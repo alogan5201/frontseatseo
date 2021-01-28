@@ -1,0 +1,617 @@
+<!DOCTYPE HTML>
+<!--
+Cascade by Pixelarity
+pixelarity.com | hello@pixelarity.com
+License: pixelarity.com/license
+-->
+<html>
+<head>
+<% include ../partials/header.ejs %>
+<style type="text/css">
+.slide {
+text-align: center;
+}
+#actions{
+position:fixed;
+top: 73px;
+left: 30px;
+z-index: 99999;
+}
+#actions li{
+background: rgba(0,0,0,0.8);
+padding: 7px;
+margin: 2px;
+color: #ccc;
+display: inline-block;
+cursor: pointer;
+}
+#actions li:hover{
+color: #fff;
+background: #81A140;
+}
+
+
+#myVideo{
+position: absolute;
+right: 0;
+bottom: 0;
+top:0;
+width: 100%;
+height: 100%;
+background-size: 100% 100%;
+background-color: black; /* in case the video doesn't fit the whole page*/
+background-image: url("/videos/intro.webm");
+background-position: center center;
+background-size: contain;
+object-fit: cover; /*cover video background */
+z-index:3;
+}
+
+
+
+/* Layer with position absolute in order to have it over the video
+* --------------------------------------- */
+#section0 .layer{
+position: absolute;
+z-index: 4;
+width: 100%;
+left: 0;
+top: 43%;
+
+/*
+* Preventing flicker on some browsers
+* See http://stackoverflow.com/a/36671466/1081396  or issue #183
+*/
+-webkit-transform: translate3d(0,0,0);
+-ms-transform: translate3d(0,0,0);
+transform: translate3d(0,0,0);
+}
+
+/*solves problem with overflowing video in Mac with Chrome */
+#section0{
+overflow: hidden;
+}
+
+
+/* Bottom menu
+* --------------------------------------- */
+#infoMenu li a {
+color: #fff;
+}
+
+
+/* Hiding video controls
+* See: https://css-tricks.com/custom-controls-in-html5-video-full-screen/
+* --------------------------------------- */
+video::-webkit-media-controls {
+display:none !important;
+}
+.fp-slidesNav.fp-bottom {
+text-align:center;
+}
+.fp-controlArrow.fp-prev {
+left: 40px;
+width: 0;
+border-width: 20.5px 23px 20.5px 0;
+border-color: transparent #555555 transparent transparent;
+}
+.fp-controlArrow.fp-next {
+right: 40px;
+border-width: 20.5px 0 20.5px 23px;
+border-color: transparent transparent transparent #555;
+}
+
+.clearfix:before, .clearfix:after { display: table; content: ''; }
+.clearfix:after { clear: both; }
+
+
+
+input:focus, textarea:focus, keygen:focus, select:focus {
+	outline: none;
+}
+::-moz-placeholder {
+	color: #666;
+	font-weight: 300;
+	opacity: 1;
+}
+
+::-webkit-input-placeholder {
+	color: #666;
+	font-weight: 300;
+}
+
+
+/* Contact Form Styling */
+.container {
+	padding: 0 50px 70px;
+}
+.textcenter {
+	text-align: center;
+}
+.section1 {
+	text-align: center;
+	display: table;
+	width: 100%;
+}
+.section1 .shtext {
+	display: block;
+	margin-top: 20px;
+}
+.section1 .seperator {
+	border-bottom:1px solid #a2a2a2;
+	width: 35px;
+	display: inline-block;
+	margin: 20px;
+}
+
+.section1 h1 {
+	color: #0c0c0c;
+font-weight: 700;
+font-size: 3rem;
+line-height: 1.1;
+letter-spacing: -.015em;
+font-family: Buenos Aires, sans-serif;
+font-style: normal;
+text-transform: none;
+}
+
+.section2 {
+    width: 1200px;
+    margin: 25px auto;
+}
+.section2 .col2 {
+	width: 48.71%;
+}
+.section2 .col2.first {
+	float: left;
+}
+.section2 .col2.last {
+	float: right;
+}
+.section2 .col2.column2 {
+	padding: 0 30px;
+}
+.section2 span.collig {
+	color: #a2a2a2;
+	margin-right: 10px;
+	display: inline-block;
+}
+.section2 .sec2addr {
+	display: block;
+	line-height: 26px;
+}
+.section2 .sec2addr p:first-child {
+	margin-bottom: 10px;
+}
+.section2 .sec2contactform input[type="text"], 
+.section2 .sec2contactform input[type="email"],
+.section2 .sec2contactform textarea {
+    padding: 18px;
+    border: 0;
+    background: #EDEDED;
+    margin: 7px 0;
+}
+.section2 .sec2contactform textarea {
+	width: 100%;
+	display: block;
+	color: #666;
+  resize:none;
+}
+.section2 .sec2contactform input[type="submit"] {
+	padding: 15px 40px;
+    color: #fff;
+    border: 0;
+    background: #A44DD8;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 7px 0;
+    cursor: pointer;
+}
+.section2 .sec2contactform h3 {
+	font-weight: normal;
+    margin: 20px 0;
+    margin-top: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 19px;
+    color: #A44DD8;
+}
+
+/* @media querries */
+
+@media only screen and (max-width: 1266px) {
+	.section2 {
+		width: 100%;
+	}
+}
+@media only screen and (max-width: 960px) {
+	.container {
+		padding: 0 30px 70px;
+	}
+	.section2 .col2 {
+		width: 100%;
+		display: block;
+	}
+	.section2 .col2.first {
+		margin-bottom: 10px;
+	}
+	.section2 .col2.column2 {
+		padding: 0;
+	}
+	body .sec2map {
+		height: 250px !important;
+	}
+}
+@media only screen and (max-width: 768px) {
+	.section2 .sec2addr {
+		font-size: 14px;
+	}
+	.section2 .sec2contactform h3 {
+		font-size: 16px;
+	}
+	.section2 .sec2contactform input[type="text"], .section2 .sec2contactform input[type="email"], .section2 .sec2contactform textarea {
+		padding: 10px;
+		margin:3px 0;
+	}
+	.section2 .sec2contactform input[type="submit"] {
+		padding: 10px 30px;
+		font-size: 14px;
+	}
+}
+@media only screen and (max-width: 420px) {
+	.section1 h1 {
+		font-size: 28px;
+	}	
+}
+</style>
+
+</head>
+<body>
+
+    
+  
+     <div class="overlay-navigation">
+            
+        <nav id = "second-nav" role="navigation">
+            <ul>
+              <li class="column main-nav">
+             
+            <a href="/"> <p>
+            Home
+            </p></a>
+          <br>
+          <div class="mobile-hide">
+           <a href="/who-we-help"> <p>Who We Help</p> </a>
+        
+        <br>
+       <a href="/services"><div class="services-link">
+  <p>services</p>
+  <hr class="services-line">
+       </div> </a>  
+        <br>
+        <a href="/company"><p>Company</p></a>
+        
+        <br>
+        <a href="/contact"><p>Contact</p></a>
+          </div>
+        </li>
+            
+             
+              <li class="column border-left ">
+                <div class="desktop-hide"><a href="/who-we-help"> <p>Who We Help</p> </a></div>
+                <div class="row services-row mobile-hide">
+                  
+                  <div class="col-6 col-12-xsmall">
+  
+  <a class = "v-link" href="/seo" data-content="Curious?"> SEO</a>
+                <a class = "v-link" href="#" data-content="Curious?">Google Ads</a>
+                <a class = "v-link" href="#" data-content="Curious?">Facebook Ads</a>
+                <a class = "v-link" href="#" data-content="Curious?">Directory Listings</a>
+  
+                  </div>
+                  <div class="col-6 col-12-xsmall">
+                    <a class = "v-link" href="#" data-content="I got game">Social Media Marketing</a>
+                    <a class = "v-link" href="#" data-content="I got game">Content Marketing</a>
+                    <a class = "v-link" href="#" data-content="I got game">Website Design</a>
+  
+                  </div>
+                </div>
+              
+  
+              </li>
+  
+              <li class="column nav-contact ">
+              <div class="desktop-hide"><a href="/services"> <p>Services</p> </a> </div>
+   
+               <div class="row mobile-hide">
+               
+  <p>
+  <a class = "v-link" href="/contact">Contact <br></a>
+  <a class = "v-link" href="/contact">Front Seat Seo <br></a>
+  <a class = "v-link" href="/contact">(435) 374-9499 <br></a>
+  <a class = "v-link" href="/contact">support@frontseatseo.com <br></a>
+  <a class = "v-link" href="/contact">213 N Center St, Wellsville, UT 84339, United States</a>
+  
+  </p>
+               </div>
+  
+  
+                
+              </li>
+
+              <li class="column">
+              <div class="desktop-hide">
+               <a href="/company"><p>Company</p></a>
+              </div>
+             
+              </li>
+              <li class="column">
+              <div class="desktop-hide"> <a href="/contact"><p>Contact</p></a>
+              </div>
+             
+              </li>
+            
+            </ul>
+          
+          
+          </nav>
+
+
+        </div>
+      <div class="open-overlay">
+        <div class="toggle">
+  
+          <svg x="0px" y="0px" width="100%" viewBox="0 0 96 96" class="gh-svg gh-svg-top" enable-background="new 0 0 96 96">
+            <rect width="32" height="4" x="32" y="46" class="gh-svg-rect gh-svg-rect-top"></rect>
+          </svg>
+          <svg x="0px" y="0px" width="100%" viewBox="0 0 96 96" class="gh-svg gh-svg-bottom" enable-background="new 0 0 96 96">
+            <rect width="32" height="4" x="32" y="46" class="gh-svg-rect gh-svg-rect-bottom"></rect>
+          </svg>
+        </div>
+      </div>
+
+<!-- FULL PAGE JSsss-->
+ 
+<div id="fullPage" class="contact-page">
+
+      
+      <div class="section">
+       <nav class="navbar">
+        <label class="navbar-toggle" id="js-navbar-toggle" for="chkToggle">
+                <i class="fa fa-bars"></i>
+            </label>
+       
+        <input type="checkbox" id="chkToggle"></input>
+        <ul class="main-nav-tab" id="js-menu">
+          <li>
+            <a href="/" class="nav-links">Home</a>
+          </li>
+          <li>
+            <a href="/services" class="nav-links">Services</a>
+          </li>
+          <li>
+            <a href="/who-we-help" class="nav-links">Who We Help</a>
+          </li>
+          <li>
+            <a href="/contact" class="nav-links">Contact</a>
+          </li>
+         
+        </ul>
+      </nav>
+     <div class="wrapper">
+     <div class="container">
+		<div class="innerwrap">
+		
+			<section class="section1 clearfix">
+				<div class="textcenter">
+				<h1>Contact</h1>
+        <p>We’re available weekdays, and if you shoot us an email, we’re guaranteed to respond within 24 hours. </br>If you have questions or want to catch up, let us know!</p>
+					<span class="seperator"></span>
+					
+				</div>
+			</section>
+		
+			<section class="section2 clearfix">
+      
+				<div class="col2 column1 first">
+					<div class="sec2contactform">
+						
+						<form action="/ajax/email" method = "post">
+							<div class="clearfix">
+								<input class="col2 first" type="text" placeholder="First Name*">
+								<input class="col2 last" type="text" placeholder="Last Name*">
+							</div>
+							<div class="clearfix">
+              <input class="col2 last" type="text" placeholder="Contact Number*">
+								<input  class="col2 first" type="Email" placeholder="Email*">
+								
+							</div>
+              <div class="clearfix">
+								<input  class="col2 first" type="text" placeholder="Current Website">
+								<input class="col2 last" type="text" placeholder="What Industry Are You In?">
+							</div>
+							<div class="clearfix">
+								<textarea name="textarea" id="" cols="30" rows="7">Your message here...</textarea>
+							</div>
+							<button type="submit" name="submit">send</button>
+						</form>
+					</div>
+				</div>
+				<div class="col2 column2 last">
+				
+					
+<div class="sec2innercont">
+						<div class="sec2addr">
+            <h3>Contact Info</h3>
+							
+							<p><span class="collig"><i class="icon solid fa-phone"></i></span> 4353749499</p>
+							<p><span class="collig"><i class="icon solid fa-envelope"></i></span> support@frontseatseo.com</p>
+							<p><span class="collig"><i class="icon solid fa-map-marker-alt"></i></span> 213 N Center St, Wellsville, UT 84339, United States</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		
+		</div>
+	</div>
+     </div>
+    
+      </div>
+      
+    
+   
+  
+    
+     
+     
+      
+</div>
+ <div class="three-steps">
+      <div class="inner">
+       
+        <div class="grid-wrapper">
+            <header class="major">
+                <h2>3 Steps to Make your Business an Online Powerhouse</h2>
+                </header>
+                
+        <div class="a">
+        <h3>
+Schedule a Call</h3>
+        <img src="images/stepone.svg" alt="" />
+            
+            <p>
+            Direct your target demographic straight to you through
+            powerful PPCs on first-tier search engines.
+            </p>
+            <ul class="actions align-center aln-center">
+                    <li><a href="#" class="button primary accent1">Schedule Now</a></li>
+                    </ul>
+                    <i class="fas fa-angle-double-down"></i> 
+            </div>  
+        
+            <div class="b"> 
+            <h3>Get Your Plan</h3>
+            <img src="images/steptwo.svg" alt="" />
+                
+                <p>
+               Browse through everything we have to offer and choose the option that's right for you!
+                </p>
+                 <ul class="actions align-center aln-center">
+                    <li><a href="#" class="button primary accent1">Get Plan</a></li>
+                    </ul>
+                  <i class="fas fa-angle-double-down"></i> 
+                </div>
+        
+        <div class="c">
+         <h3>Win Online</h3>
+            <img src="images/stepthree.svg" alt="" />
+       
+        <p>
+        Take charge of all search engines and business listings with
+                    our all-in-one marketing solutions!
+        </p>
+         <ul class="actions align-center aln-center">
+                    <li><a href="#" class="button primary accent1">Start Winning</a></li>
+                    </ul>
+        </div>
+        </div></div>
+        </div>
+<div> 
+
+        <div class="wrapper bottom-nav-wrapper">
+       <div class="inner">
+       
+     
+        <div class="two-column-grid last-section-contact contact">
+        <section><p>Interested In Digital Marketing Support? <br>Speak to us Today!</p></section>
+        
+       <aside>
+
+         <p class="desktop-contact">
+      <a href="/contact" class="js-btn btn-contact" data-btn-scroll="true" data-btn-autoplay="play">
+         <svg width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="none">
+           <circle cx="50" cy="50" r="48" stroke="#0003" stroke-width="1" fill="none" />
+     <circle class="js-circle circle" cx="50" cy="50" r="48" stroke="red" stroke-width="1" fill="none"  />
+     
+     
+        </svg><i class="fas fa-arrow-right"></i>
+       </a>
+     </p>
+     <div class="circle-button-container">
+  <div class="bg"></div>
+  <div class="circle-button"><a href="/contact" target="_blank"><i class="fas fa-arrow-right" aria-hidden="true"></i></a></div>
+</div>
+       </aside>
+
+        </div>
+      
+         
+       
+       </div>
+       </div>
+      <footer id="footer">
+<ul class="contact-icons">
+<li class="icon solid fa-map-marker-alt">213 N Center St, Wellsville, UT 84339, United States</li>
+<li class="icon solid fa-phone">
+(435) 374-9499</li>
+<li class="icon solid fa-envelope"><a href="mailto:support@frontseatseo.com">
+support@frontseatseo.com</a>
+
+</li>
+</ul>
+<div class="copyright">
+&copy; 2021 All Rights Reserved | Front Seat SEO
+</div>
+</footer>
+      </div>
+
+
+
+
+
+<% include ../partials/footer.ejs %>
+<% include ../partials/allOtherScripts.ejs %>
+
+<script type="text/javascript">
+new fullpage('#fullPage', {
+sectionsColor: [ '#ffffff', '#f5f6fb', '#ffffff',  '#ffffff', '#ffffff'],
+anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', '5thpage'],
+
+
+  slidesNavigation: true,
+  verticalCentered: true,
+
+
+//In addition to the extension license you'll 
+//need to acquire a fullPage.js license from https://goo.gl/5x9a22
+licenseKey: 'FEFCCF8A-3B24438B-9A773D0D-3C10A4C4',
+  
+           //see https://goo.gl/xkUmHS
+            
+        responsiveWidth: 900,
+        responsiveSlides: true,
+        responsiveSlidesKey: '34E7F71A-6EE942F5-85DD5D7D-064085E2', 
+            //see https://goo.gl/xkUmHS
+            
+         //see https://goo.gl/xkUmHS
+        autoScrolling: false,
+		fitToSection: false
+});
+
+
+
+     
+
+$( document ).ready(function() {
+$("button").click(function(){
+  $("p:first").addClass("intro");
+});
+   
+
+
+
+});
+
+</script>
+
+</body>
+</html>
