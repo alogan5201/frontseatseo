@@ -7,6 +7,9 @@ License: pixelarity.com/license
 <html>
 <head>
 <% include ../partials/header.ejs %>
+
+<!---
+
 <style type="text/css">
 .slide {
 text-align: center;
@@ -102,6 +105,9 @@ border-color: transparent transparent transparent #555;
 }
 
 </style>
+
+-->
+
 </head>
 <body>
 
@@ -209,41 +215,36 @@ border-color: transparent transparent transparent #555;
 <a href="#firstPage" id="scroll" class="fade-in"><img src="images/arrow-up-minimal-black.svg" alt="arrow-up" width="50px" height="50px"></a>
 
 <!-- FULL PAGE JSsss-->
-
+<nav class="navbar">
+  <label class="navbar-toggle" id="js-navbar-toggle" for="chkToggle">
+          <i class="fa fa-bars"></i>
+      </label>
+ 
+  <input type="checkbox" id="chkToggle"></input>
+  <ul class="main-nav-tab" id="js-menu">
+    <li>
+      <a href="/" class="nav-links">Home</a>
+    </li>
+    <li>
+      <a href="/services" class="nav-links">Services</a>
+    </li>
+    <li>
+      <a href="/who-we-help" class="nav-links">Who We Help</a>
+    </li>
+    <li>
+      <a href="/contact" class="nav-links">Contact</a>
+    </li>
+   
+  </ul>
+</nav>
 <div id="fullPage">
-    <nav class="navbar">
-        <label class="navbar-toggle" id="js-navbar-toggle" for="chkToggle">
-                <i class="fa fa-bars"></i>
-            </label>
-       
-        <input type="checkbox" id="chkToggle"></input>
-        <ul class="main-nav-tab" id="js-menu">
-          <li>
-            <a href="/" class="nav-links">Home</a>
-          </li>
-          <li>
-            <a href="/services" class="nav-links">Services</a>
-          </li>
-          <li>
-            <a href="/who-we-help" class="nav-links">Who We Help</a>
-          </li>
-          <li>
-            <a href="/contact" class="nav-links">Contact</a>
-          </li>
-         
-        </ul>
-      </nav>
+  
 <div class="section" id="section0">
-<video id="myVideo"  muted>
-<source src="videos/glossyv2.webm" type="video/webm">
 
-</video>
-<div class="layer">
-    
-</div>
-<div id="full-bg">  
-
-</div>
+   <div class="intro">
+          <h1>Section 1</h1>
+          <p>Scroll down to see auto-height sections</p>
+        </div>
 </div>
 <div class="section" id="section1">
 <article id="one" class="spotlight odd accent1">
