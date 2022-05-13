@@ -411,7 +411,7 @@ feedback! </p>
 </article>
 </div>
 
-<div class="section">
+<div class="section " style="display: none !important;">
 <div class="slide" id="slide1">
     
     <div class="inner">
@@ -573,46 +573,40 @@ Web Design Inquiries | andrewlogan.dev
 <% include ../partials/footer.ejs %>
 <% include ../partials/frontPageScripts.ejs %>
 
-<script type="text/javascript">
-new fullpage('#fullPage', {
-sectionsColor: ['transparent', '#f6f9fc', '#ffffff', '#f6f9fc', '#ffffff',  '#f6f9fc', '#e3e3e3'],
-anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', '5thpage', '6thpage', '7thpage', '8thpage', '9thpage'],
 
-slidesNavigation: true,
+<script>
+
+var myFullpage = new fullpage('#fullPage', {
+licenseKey: 'gplv3-license',
+    sectionsColor: ['transparent', '#f6f9fc', '#ffffff', '#f6f9fc', '#ffffff', '#f6f9fc', '#e3e3e3'],
+    anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', '5thpage', '6thpage', '7thpage', '8thpage', '9thpage'],
+
+    slidesNavigation: false,
+
+    
+    
+    //In addition to the extension license you'll 
+    //need to acquire a fullPage.js license from https://goo.gl/5x9a22
 
 
+    //see https://goo.gl/xkUmHS
 
-//In addition to the extension license you'll 
-//need to acquire a fullPage.js license from https://goo.gl/5x9a22
-licenseKey: 'FEFCCF8A-3B24438B-9A773D0D-3C10A4C4',
-  
-                  
-            fadingEffect: 'slides',
-            fadingEffectKey: '34E7F71A-6EE942F5-85DD5D7D-064085E2', //see https://goo.gl/xkUmHS
-            
-        responsiveWidth: 900,
-        responsiveHeight: 600,
-        responsiveSlides: true,
-        responsiveSlidesKey: '34E7F71A-6EE942F5-85DD5D7D-064085E2', //see https://goo.gl/xkUmHS
-          offsetSections: true,
-        offsetSectionsKey: '34E7F71A-6EE942F5-85DD5D7D-064085E2' //see https://goo.gl/xkUmHS
+    responsiveWidth: 900,
+    responsiveHeight: 600,
+    responsiveSlides: true,
+    offsetSections: false,
 });
 
 var video = document.getElementById("myVideo");
 video.play();
 // listen for the event that fires when your video has finished playing
-video.addEventListener('ended', function() {
+video.addEventListener('ended', function () {
     // pause the video
     this.pause();
     // set play time to the last frame
     this.currentTime = this.duration;
 }, false);
 
-$( document ).ready(function() {
-    console.log( "ready!" );
-});
-
 </script>
-
 </body>
 </html>

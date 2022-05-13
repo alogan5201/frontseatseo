@@ -7163,6 +7163,9 @@ div.web-design-page div.slide .two-column-grid {
 }
 
 @media screen and (max-width: 900px) {
+#two .table-wrapper {
+display: none;
+}
   .company-page .company-banner .image {
     background-size: 61% 100%;
 
@@ -7497,4 +7500,8 @@ div.web-design-page div.slide .two-column-grid {
 
 .main-nav-tab li {
   margin-top: 1rem !important;
+}
+
+div.section.fp-section {
+overflow: hidden !important;
 }
